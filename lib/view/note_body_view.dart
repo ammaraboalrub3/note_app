@@ -13,21 +13,27 @@ class NoteBodyView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CustomTextAppBar(
-                  text: "Notes",
-                ),
-                CustomIconAppBar(
-                  icon: Icons.search,
-                ),
-              ],
-            ),
-            Expanded(child: CustomNoteItemBuilder()),
-          ],
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomTextAppBar(
+                    text: "Notes",
+                  ),
+                  CustomIconAppBar(
+                    icon: Icons.search,
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Expanded(child: CustomNoteItemBuilder()),
+            ],
+          ),
         ),
       ),
     );
