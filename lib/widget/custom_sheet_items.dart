@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:note_application/widget/Custom_text_field.dart';
 import 'package:note_application/widget/custom_circle_avatar_builder.dart';
 
+import 'custom_click_button.dart';
+
 class CustomSheetItems extends StatelessWidget {
   const CustomSheetItems({
     super.key,
@@ -15,24 +17,33 @@ class CustomSheetItems extends StatelessWidget {
             right: 16,
             left: 16,
             bottom: MediaQuery.of(context).viewInsets.bottom),
-        child: const SingleChildScrollView(
+        child: SingleChildScrollView(
             child: Column(
           children: [
-            CustomTextField(
+            const CustomTextField(
               maxLines: 1,
               hint: "text",
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
-            CustomTextField(
+            const CustomTextField(
               maxLines: 5,
               hint: "contant",
             ),
-            SizedBox(
+            const SizedBox(
+              height: 40,
+            ),
+            const CustomCircleAvatarBuilder(),
+            const SizedBox(
               height: 20,
             ),
-            CustomCircleAvatarBuilder(),
+            CustomCickButton(
+              onPressed: () {},
+            ),
+            const SizedBox(
+              height: 18,
+            )
           ],
         )));
   }
