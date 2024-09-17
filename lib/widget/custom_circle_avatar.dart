@@ -7,12 +7,15 @@ class CustomCircleAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CircleAvatar(
-      radius: 30,
-      backgroundColor: Colors.white,
+    return const Padding(
+      padding: EdgeInsets.only(right: 12),
       child: CircleAvatar(
-        radius: 28,
-        backgroundColor: Colors.blue,
+        radius: 30,
+        backgroundColor: Colors.white,
+        child: CircleAvatar(
+          radius: 28,
+          backgroundColor: Colors.blue,
+        ),
       ),
     );
   }

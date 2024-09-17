@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_application/widget/Custom_text_field.dart';
-
-import 'custom_circle_avatar.dart';
+import 'package:note_application/widget/custom_circle_avatar_builder.dart';
 
 class CustomSheetItems extends StatelessWidget {
   const CustomSheetItems({
@@ -33,7 +32,7 @@ class CustomSheetItems extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            CustomCircleAvatar()
+            CustomCircleAvatarBuilder(),
           ],
         )));
   }
