@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:note_application/constant.dart';
 
+import '../view/edit_note_view.dart';
+
 class CustomNoteItem extends StatelessWidget {
   const CustomNoteItem({
     super.key,
@@ -40,7 +42,12 @@ class CustomNoteItem extends StatelessWidget {
                     children: [
                       IconButton(
                         padding: EdgeInsets.zero,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return const EditNoteView();
+                          }));
+                        },
                         icon: (const Icon(
                           Icons.edit,
                           size: 27,
