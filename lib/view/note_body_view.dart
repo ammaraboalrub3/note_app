@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_application/widget/custom_sheet_items.dart';
+import 'package:note_application/widget/custom_main_sheet_body.dart';
 
 import '../widget/note_body_view_extract.dart';
 
@@ -21,7 +21,7 @@ class NoteBodyView extends StatelessWidget {
                 ),
                 context: context,
                 builder: (context) {
-                  return const CustomSheetItems();
+                  return const CustomMainSheetBody();
                 });
           }),
       body: const SafeArea(
