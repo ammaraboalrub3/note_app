@@ -8,13 +8,14 @@ class CustomSheetItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        CustomTextField(
-          maxLines: 1,
-          hint: "text",
-        ),
-      ],
-    );
+    return Padding(
+        padding:
+            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: const SingleChildScrollView(
+          child: CustomTextField(
+            maxLines: 1,
+            hint: "text",
+          ),
+        ));
   }
 }

@@ -15,7 +15,10 @@ class NoteBodyView extends StatelessWidget {
           child: const Icon(Icons.add),
           onPressed: () {
             showModalBottomSheet(
-                isScrollControlled: false,
+                isScrollControlled: true,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(24),
+                ),
                 context: context,
                 builder: (context) {
                   return const CustomSheetItems();
