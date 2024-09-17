@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note_application/widget/Custom_note_item_builder.dart';
 
 import '../widget/custom_icon_appBar.dart';
 import '../widget/custom_text_appBar.dart';
@@ -25,6 +26,7 @@ class NoteBodyView extends StatelessWidget {
                 ),
               ],
             ),
+            Expanded(child: CustomNoteItemBuilder()),
           ],
         ),
       ),
