@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:note_application/widget/Custom_note_item_builder.dart';
+import 'package:note_application/widget/custom_sheet_items.dart';
 
-import '../widget/custom_icon_appBar.dart';
-import '../widget/custom_text_appBar.dart';
+import '../widget/note_body_view_extract.dart';
 
 class NoteBodyView extends StatelessWidget {
   const NoteBodyView({super.key});
@@ -11,29 +10,21 @@ class NoteBodyView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.add),
+          onPressed: () {
+            showModalBottomSheet(
+                isScrollControlled: false,
+                context: context,
+                builder: (context) {
+                  return const CustomSheetItems();
+                });
+          }),
+      body: const SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CustomTextAppBar(
-                    text: "Notes",
-                  ),
-                  CustomIconAppBar(
-                    icon: Icons.search,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              Expanded(child: CustomNoteItemBuilder()),
-            ],
-          ),
+          child: NoteBodyViewExtract(),
         ),
       ),
     );

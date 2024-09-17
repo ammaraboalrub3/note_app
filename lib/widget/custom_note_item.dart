@@ -21,10 +21,10 @@ class CustomNoteItem extends StatelessWidget {
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10, right: 8),
+              padding: const EdgeInsets.only(left: 10),
               child: ListTile(
                   title: Padding(
-                    padding: const EdgeInsets.only(bottom: 15),
+                    padding: const EdgeInsets.only(bottom: 15, top: 10),
                     child: Text(
                       "Flutter test",
                       style: TextStyle(color: kColor, fontSize: 30),
@@ -38,24 +38,32 @@ class CustomNoteItem extends StatelessWidget {
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(
-                        Icons.edit,
+                      IconButton(
+                        padding: EdgeInsets.zero,
+                        onPressed: () {},
+                        icon: (const Icon(
+                          Icons.edit,
+                          size: 27,
+                        )),
                         color: kColor,
-                        size: 27,
                       ),
                       const SizedBox(
                         width: 10,
                       ),
-                      Icon(
-                        Icons.delete,
+                      IconButton(
+                        padding: EdgeInsets.zero,
+                        onPressed: () {},
+                        icon: (const Icon(
+                          Icons.delete,
+                          size: 27,
+                        )),
                         color: kColor,
-                        size: 27,
                       ),
                     ],
                   )),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 28, top: 20),
+              padding: const EdgeInsets.only(right: 32, top: 20),
               child: Text(
                 "17/9/2024",
                 style: TextStyle(color: kColor.withOpacity(0.5), fontSize: 14),
