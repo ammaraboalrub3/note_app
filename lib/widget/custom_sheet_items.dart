@@ -21,52 +21,57 @@ class _CustomSheetItemsState extends State<CustomSheetItems> {
   String? title, subTitle;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AddNoteCubit(),
-      child: Form(
-        key: formKey,
-        autovalidateMode: autovalidateMode,
-        child: Column(
-          children: [
-            CustomTextField(
-              onSaved: (value) {
-                title = value;
-              },
-              maxLines: 1,
-              hint: "text",
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            CustomTextField(
-              onSaved: (value) {
-                subTitle = value;
-              },
-              maxLines: 5,
-              hint: "contant",
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            const CustomCircleAvatarBuilder(),
-            const SizedBox(
-              height: 20,
-            ),
-            CustomCickButton(onPressed: () {
-              if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
-                BlocProvider.of<AddNoteCubit>(context);
-                Navigator.pop(context);
-              } else {
-                autovalidateMode = AutovalidateMode.always;
-                setState(() {});
-              }
-            }),
-            const SizedBox(
-              height: 18,
-            )
-          ],
-        ),
+    return Form(
+      key: formKey,
+      autovalidateMode: autovalidateMode,
+      child: Column(
+        children: [
+          CustomTextField(
+            onSaved: (value) {
+              title = value;
+            },
+            maxLines: 1,
+            hint: "text",
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          CustomTextField(
+            onSaved: (value) {
+              subTitle = value;
+            },
+            maxLines: 5,
+            hint: "contant",
+          ),
+          const SizedBox(
+            height: 40,
+          ),
+          const CustomCircleAvatarBuilder(),
+          const SizedBox(
+            height: 20,
+          ),
+          BlocBuilder<AddNoteCubit, AddNoteState>(
+            builder: (context, state) {
+              return CustomCickButton(
+                  isLoading: state is AddNoteLoading ? true : false,
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
+                      BlocProvider.of<AddNoteCubit>(context);
+                      Navigator.pop(context);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("Add Success")));
+                    } else {
+                      autovalidateMode = AutovalidateMode.always;
+                      setState(() {});
+                    }
+                  });
+            },
+          ),
+          const SizedBox(
+            height: 18,
+          )
+        ],
       ),
     );
   }
