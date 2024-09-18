@@ -5,8 +5,4 @@ sealed class NoteViewState {}
 
 final class NoteViewInitial extends NoteViewState {}
 
-final class Notesuccess extends NoteViewState {
-  final List<NoteModel> note;
-
-  Notesuccess(this.note);
-}
+final class Notesuccess extends NoteViewState {}
