@@ -64,7 +64,7 @@ class _CustomSheetItemsState extends State<CustomSheetItems> {
                           date: DateTime.now().toString(),
                           color: Colors.green.value);
                       BlocProvider.of<AddNoteCubit>(context).addNote(note);
-                      Navigator.pop(context);
+
                       ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text("Add Success")));
                     } else {

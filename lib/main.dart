@@ -5,6 +5,7 @@ import 'package:note_application/view/note_body_view.dart';
 import 'package:note_application/widget/simple_bloc_observer.dart';
 
 import 'constant.dart';
+import 'cubit/cubit/note_view_cubit.dart';
 import 'model/note_model.dart';
 
 void main() async {
@@ -21,13 +22,16 @@ class NoteApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(brightness: Brightness.dark),
-      debugShowCheckedModeBanner: false,
-      routes: {
-        NoteBodyView.id: (context) => const NoteBodyView(),
-      },
-      initialRoute: NoteBodyView.id,
+    return BlocProvider(
+      create: (context) => NoteViewCubit(),
+      child: MaterialApp(
+        theme: ThemeData(brightness: Brightness.dark),
+        debugShowCheckedModeBanner: false,
+        routes: {
+          NoteBodyView.id: (context) => const NoteBodyView(),
+        },
+        initialRoute: NoteBodyView.id,
+      ),
     );
   }
 }
