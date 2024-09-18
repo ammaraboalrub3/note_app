@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_application/cubit/add_note/add_note_cubit.dart';
+
 import 'custom_sheet_items.dart';
 
 class CustomMainSheetBody extends StatelessWidget {
@@ -30,7 +31,9 @@ class CustomMainSheetBody extends StatelessWidget {
               }
             },
             builder: (context, state) {
-              return const CustomSheetItems();
+              return AbsorbPointer(
+                  absorbing: state is AddNoteLoading ? true : false,
+                  child: const CustomSheetItems());
             },
           ),
         ),

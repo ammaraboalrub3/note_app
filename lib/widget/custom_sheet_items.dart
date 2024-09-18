@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_application/cubit/add_note/add_note_cubit.dart';
+import 'package:note_application/model/note_model.dart';
 
 import 'Custom_text_field.dart';
 import 'custom_circle_avatar_builder.dart';
@@ -57,7 +58,12 @@ class _CustomSheetItemsState extends State<CustomSheetItems> {
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
-                      BlocProvider.of<AddNoteCubit>(context);
+                      var note = NoteModel(
+                          title: title!,
+                          subTitle: subTitle!,
+                          date: DateTime.now().toString(),
+                          color: Colors.green.value);
+                      BlocProvider.of<AddNoteCubit>(context).addNote(note);
                       Navigator.pop(context);
                       ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text("Add Success")));
