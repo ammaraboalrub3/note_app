@@ -9,3 +9,5 @@ List<Color> kListcolor = [
   const Color(0xff777766),
   const Color(0xff37371F),
 ];
+
+String noteBox = "noteBox";
