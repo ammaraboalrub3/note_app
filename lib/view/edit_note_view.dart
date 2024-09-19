@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_application/cubit/cubit/note_view_cubit.dart';
 import 'package:note_application/model/note_model.dart';
 import 'package:note_application/widget/Custom_text_field.dart';
-import 'package:note_application/widget/custom_circle_avatar_builder.dart';
 import 'package:note_application/widget/custom_icon_appBar.dart';
 import 'package:note_application/widget/custom_text_appBar.dart';
+
+import '../constant.dart';
+import '../widget/custom_circle_avatar.dart';
 
 class EditNoteView extends StatefulWidget {
   const EditNoteView({super.key, required this.note});
@@ -63,11 +65,54 @@ class _EditNoteViewState extends State<EditNoteView> {
               const SizedBox(
                 height: 16,
               ),
-              const CustomCircleAvatarBuilder(),
+              EditNoteColor(
+                note: widget.note,
+              ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class EditNoteColor extends StatefulWidget {
+  const EditNoteColor({super.key, required this.note});
+  final NoteModel note;
+
+  @override
+  State<EditNoteColor> createState() => _EditNoteColorState();
+}
+
+class _EditNoteColorState extends State<EditNoteColor> {
+  late int currentIndex;
+  @override
+  void initState() {
+    currentIndex = kListcolor.indexOf(Color(widget.note.color));
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 60,
+      child: ListView.builder(
+          physics: const BouncingScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          itemCount: kListcolor.length,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () {
+                currentIndex = index;
+                widget.note.color = kListcolor[index].value;
+                setState(() {});
+              },
+              child: CustomCircleAvatar(
+                color: kListcolor[index],
+                isActive: currentIndex == index,
+              ),
+            );
+          }),
     );
   }
 }

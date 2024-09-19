@@ -5,7 +5,9 @@ import 'package:note_application/cubit/add_note/add_note_cubit.dart';
 import 'package:note_application/widget/custom_circle_avatar.dart';
 
 class CustomCircleAvatarBuilder extends StatefulWidget {
-  const CustomCircleAvatarBuilder({super.key});
+  const CustomCircleAvatarBuilder({
+    super.key,
+  });
 
   @override
   State<CustomCircleAvatarBuilder> createState() =>
