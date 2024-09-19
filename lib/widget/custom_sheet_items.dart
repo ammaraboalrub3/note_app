@@ -65,7 +65,7 @@ class _CustomSheetItemsState extends State<CustomSheetItems> {
                           title: title!,
                           subTitle: subTitle!,
                           date: formattedDate,
-                          color: Colors.green.value);
+                          color: Colors.yellow.value);
                       BlocProvider.of<AddNoteCubit>(context).addNote(note);
 
                       ScaffoldMessenger.of(context).showSnackBar(
